@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cram-O-Matic Recipes</title>
+<script src="jquery-3.5.1.min.js"></script>
+<script src="select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="select2.min.css">
+<script src="recipes.js"></script>
+<script src="items.js"></script>
+<script>
+var types = Object.keys(recipes);
+var listoutputs = '';
+
+let serebiiUrl = 'https://www.serebii.net/itemdex/';
+let urlPostfix = '.shtml';
+
+
+$(document).ready(function() {
+	let listitems = generateOptions(items);
+	$('#item1').append(listitems);
+	$('#item2').append(listitems);
+	$('#item3').append(listitems);
+	$('#item4').append(listitems);
+	
+	$.each(types, function(index, type){
+		let recipeCosts = Object.keys(recipes[type]);
+		$.each(recipeCosts, function(index, cost){
+			let item = recipes[type][cost];
+			listoutputs += '<option value="' + item + ',' + type + '">' + item + ' (' + type +  ')' + '</option>';
+		});
+	});
+	$('#outputItems').append(listoutputs);
+	
+	$('#outputItems').on("change", function() {
+		let type = $('#outputItems').val().split(',')[1];
+		filtered = items.filter(item => item["type"] == type);
+
+		$('#item1').html(generateOptions(filtered));
+
+	});
+	
+    $('.dropdown').select2();
+
+	
+	$("#item1, #item2, #item3, #item4").on("change", function() {
+		var output = calcOutput();
+		var value = output["value"];
+		var lookupValue = output["lookupValue"];
+		var type = output["type"];
+		var outputItem = recipes[type][lookupValue].toString();
+		var urlItem = outputItem.toLowerCase().replace("'","").replace(" ","");
+		console.log(type, value, lookupValue);
+		$('#output').html(value);
+		$('#output-type').html('<a href=' + serebiiUrl + urlItem + urlPostfix + '>' + outputItem + '</a>');
+		
+	});
+	
+});
+
+function generateOptions(itemlist) {
+	var listitems = '';
+	$.each(itemlist, function(index, item){
+		var value = item["value"];
+		if(value < 0) {
+			value = "UNK";
+		}
+	
+		listitems += '<option value=' + item["type"] + ',' + item["value"] + '>' + item["name"] + ' (' + item["type"] + ', ' + value + ')' + '</option>';
+	});
+	return listitems;
+}
+
+function calcOutput() {
+	
+	var type = undefined;
+	var totalValue = 0;
+	
+	
+	for(i = 1; i <=4; i++) {
+		var item = $('#item' + i).val().split(',');
+		var value = parseInt(item[1]);
+		if(value < 0 || isNaN(value)){
+			value = 0;
+		}
+		if(i == 1) {
+			type = item[0];
+		}
+		
+		totalValue += value;
+		
+	}
+
+	convertedValue = convertRecipeValue(totalValue);
+
+	output = {
+		"type": type,
+		"value": totalValue,
+		"lookupValue": convertedValue
+	}
+	return output;
+}
+
+function convertRecipeValue(value) {
+	recipeNumber = value / 10;
+	recipeNumber = Math.ceil(recipeNumber);
+	recipeNumber *= 10;
+	if(recipeNumber < 20) {
+		recipeNumber = 20;
+	}
+	else if(recipeNumber > 160) {
+		recipeNumber = 160;
+	}
+	return recipeNumber;
+}
+
+</script>
+<style>
+.dropdown {
+	width: 300px;
+}
+
+.recipeForm {
+	width: 350px;
+}
+</style>
+</head>
+<body>
+
+<h2>Select A Recipe</h2>
+<div>Learn more here: <a href='https://www.serebii.net/swordshield/cram-o-matic.shtml'>Cram-O-Matic</a></div>
+
+<div class="recipeForm">
+	<h3>Select An Item You Want</h3>
+	<select id="outputItems" class="dropdown"></select>
+</div>
+
+<div class="recipeForm">
+	<h3>Input</h3>
+	<select id="item1" class="dropdown"></select>
+	<select id="item2" class="dropdown"></select>
+	<select id="item3" class="dropdown"></select>
+	<select id="item4" class="dropdown"></select>
+	
+	<h3>Output</h3>
+	<div id="recipeOutput">None</div>
+</div>
+
+
+
+<div id="output"></div>
+<div id="output-type"></div>
+
+</body>
+</html>
