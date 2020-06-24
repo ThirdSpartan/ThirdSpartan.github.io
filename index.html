@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Cram-O-Matic Recipe Finder</title>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/select2.min.js"></script>
+
+	<script src="js/recipes.js"></script>
+	<script src="js/items.js"></script>
+	<script src="js/logic.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="background">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2>Select A Recipe</h2>
+				<span>Learn more here: <a target=”_blank” href='https://www.serebii.net/swordshield/cram-o-matic.shtml'>Cram-O-Matic</a></span>
+			</div>
+
+			
+
+			<div class="col-12 text-center">
+				<h3>Select An Item You Want</h3>
+				<select id="outputItems" class="dropdown"></select>
+			</div>
+
+			<div class="col-12 text-center">
+				<h3>Input</h3>
+				<select id="item1" class="dropdown"></select>
+				<select id="item2" class="dropdown"></select>
+				<select id="item3" class="dropdown"></select>
+				<select id="item4" class="dropdown"></select>
+
+				<h3>Output</h3>
+			</div>
+
+			<div class="col-6 text-left">
+				<span>Desired Recipe: <span id="desiredName">None</span></span>
+				<br>
+				<span>Cost: <span id="desiredCost">None</span></span>
+			</div>
+
+			<div class="col-6 text-right">
+				
+				<span>Current Recipe: <span id="currentName">None</span></span>
+				<br>
+				<span>Cost: <span id="currentCost">None</span></span>
+			</div>
+		</div>
+	</div>
+
+	<!-- <button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'name')">Sort by name</button>
+	<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'value')">Sort by value</button>
+	<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'type')">Sort by type</button> -->
+
+</body>
+
+</html>
