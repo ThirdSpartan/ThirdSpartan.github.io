@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Cram-O-Matic Recipe Finder</title>
+	<title>Cram-O-Matic Recipe Calculator</title>
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/select2.min.js"></script>
 
@@ -16,19 +16,15 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body class="background">
-
+<body class="background p-4">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h2>Select A Recipe</h2>
-				<span>Learn more here: <a target=”_blank” href='https://www.serebii.net/swordshield/cram-o-matic.shtml'>Cram-O-Matic</a></span>
+				<h1><a target=”_blank” href='https://www.serebii.net/swordshield/cram-o-matic.shtml'>Cram-O-Matic</a> Recipe Calculator</h1>
 			</div>
 
-			
-
 			<div class="col-12 text-center">
-				<h3>Select An Item You Want</h3>
+				<h3>Select An Item You Want Or Start Choosing Ingredients</h3>
 				<select id="outputItems" class="dropdown"></select>
 			</div>
 
@@ -50,17 +46,39 @@
 
 			<div class="col-6 text-right">
 				
-				<span>Current Recipe: <span id="currentName">None</span></span>
+				<span>Current Output: <span id="currentName">None</span></span>
 				<br>
-				<span>Cost: <span id="currentCost">None</span></span>
+				<span>Current Value: <span id="currentCost">None</span></span>
 			</div>
+
+			<div class="col-12 mt-4">
+				<button onclick="toggleTheme()">Toggle Theme</button>
+				<button onclick="reload()">Reload</button>
+				<!-- <button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'name')">Sort by name</button>
+				<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'value')">Sort by value</button>
+				<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'type')">Sort by type</button> -->
+			</div>
+			
+			<div class="col-12 mt-4">
+				<h3 class="text-center">Notes</h3>
+				<ul>
+					<li>The first dropdown lists all possible item outputs with their type and point cost</li>
+					<li>The next 4 dropdowns represent all possible ingredients with their type and point value</li>
+					<li>Does not support apricorn only/apriball recipes yet</li>
+					<li>Some items do not have a listed value on serebii (labeled UNK) and are treated as adding 0 value</li>
+					<li>"Fixed" recipes require 3 of the same item and the second slot can be anything</li>
+					<li>Will add sorting options for item input lists</li>
+					<li>Thick Club and Luminous Moss listed as a range of values, not sure how to best support that (currently uses smallest value)</li>
+				</ul>
+			</div>
+
 		</div>
 	</div>
 
-	<!-- <button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'name')">Sort by name</button>
-	<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'value')">Sort by value</button>
-	<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'type')">Sort by type</button> -->
-
 </body>
+
+<div class="footer">
+	<p>All credit goes to <a target=”_blank” href='https://www.serebii.net/'>serebii.net</a> and its contributors for the data used to create this site</p>
+</div>
 
 </html>

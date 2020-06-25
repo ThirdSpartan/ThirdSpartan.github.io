@@ -322,3 +322,38 @@ recipes = {
 		"160": "PP Up"
 	}
 };
+
+fixedRecipes = [
+	{
+		"input": "Tiny Mushroom",
+		"output": "Big Mushroom"
+	},
+	{
+		"input": "Pearl",
+		"output": "Big Pearl"
+	},
+	{
+		"input": "Stardust",
+		"output": "Star Piece"
+	},
+	{
+		"input": "Big Mushroom",
+		"output": "Balm Mushroom"
+	},
+	{
+		"input": "Big Pearl",
+		"output": "Pearl String"
+	},
+	{
+		"input": "Star Piece",
+		"output": "Comet Shard"
+	},
+	{
+		"input": "Rare Candy",
+		"output": "Ability Capsule"
+	},
+	{
+		"input": "Bottle Cap",
+		"output": "Gold Bottle Cap"
+	},
+]

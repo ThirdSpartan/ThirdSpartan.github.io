@@ -4,4 +4,4 @@ what do blank values mean (currently -1)
 
 how are item value ranges calculated, randomly? (currently strings eg "8-10")
 
-chage option value from comma separated to json
+add sorting options

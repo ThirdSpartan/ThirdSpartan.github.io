@@ -1,3 +1,9 @@
+html {
+	--main-bg-color: lightgray;
+	--text-color: black;
+	--link-color: dodgerblue;
+  }
+
 .dropdown {
 	width: 100%;
 }
@@ -6,6 +12,30 @@
 	width: 350px;
 }
 
+a:link {
+	color: var(--link-color);
+  }
+
 .background {
-    background-color: lightgray;
+	background-color: var(--main-bg-color);
+	color: var(--text-color);
 }
+
+.footer {
+	background-color: black;
+	color: white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+
+}
+
+.select2-search { color: black; }
+
+.select2-search input { color: black; }
+
+.select2-results { color: black; }
+
+.select2-container { margin-bottom: 8px; }
