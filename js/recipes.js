@@ -81,17 +81,11 @@ recipes = {
 			"Love Sweet",
 			"Berry Sweet",
 			"Clover Sweet",
-			"Flower Sweet",
-			"Star Sweet",
-			"Ribbon Sweet"
+			"Flower Sweet"
 		],
 		"110": "TR92",
 		"120": [
 			"Strawberry Sweet",
-			"Love Sweet",
-			"Berry Sweet",
-			"Clover Sweet",
-			"Flower Sweet",
 			"Star Sweet",
 			"Ribbon Sweet"
 		],
@@ -356,4 +350,8 @@ fixedRecipes = [
 		"input": "Bottle Cap",
 		"output": "Gold Bottle Cap"
 	},
+	{
+		"input": "Armorite Ore",
+		"output": "PP Up"
+	}
 ]

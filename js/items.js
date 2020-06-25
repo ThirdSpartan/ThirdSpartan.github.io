@@ -1,8 +1,23 @@
 items = [
 	{
-		"name": "Shed Shell",
+		"name": "Bug Memory",
+		"type": "Bug",
+		"value": 40
+	},
+	{
+		"name": "Grip Claw",
+		"type": "Bug",
+		"value": 26
+	},
+	{
+		"name": "Silver Powder",
 		"type": "Bug",
 		"value": 10
+	},
+	{
+		"name": "Shed Shell",
+		"type": "Bug",
+		"value": 8
 	},
 	{
 		"name": "Tanga Berry",
@@ -15,24 +30,29 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Bug Memory",
+		"name": "Enigma Berry",
 		"type": "Bug",
 		"value": -1
 	},
 	{
-		"name": "Grip Claw",
-		"type": "Bug",
-		"value": -1
-	},
-	{
-		"name": "Silver Powder",
-		"type": "Bug",
-		"value": -1
+		"name": "Dark Memory",
+		"type": "Dark",
+		"value": 40
 	},
 	{
 		"name": "Dubious Disc",
 		"type": "Dark",
 		"value": 32
+	},
+	{
+		"name": "Weakness Policy",
+		"type": "Dark",
+		"value": 30
+	},
+	{
+		"name": "Razor Claw",
+		"type": "Dark",
+		"value": 26
 	},
 	{
 		"name": "Blunder Policy",
@@ -45,9 +65,24 @@ items = [
 		"value": 22
 	},
 	{
+		"name": "Zoom Lens",
+		"type": "Dark",
+		"value": 22
+	},
+	{
+		"name": "Black Glasses",
+		"type": "Dark",
+		"value": 14
+	},
+	{
 		"name": "Ring Target",
 		"type": "Dark",
 		"value": 14
+	},
+	{
+		"name": "Scope Lens",
+		"type": "Dark",
+		"value": 12
 	},
 	{
 		"name": "Binding Band",
@@ -56,6 +91,11 @@ items = [
 	},
 	{
 		"name": "Maranga Berry",
+		"type": "Dark",
+		"value": 6
+	},
+	{
+		"name": "Rowap Berry",
 		"type": "Dark",
 		"value": 6
 	},
@@ -75,14 +115,9 @@ items = [
 		"value": 0
 	},
 	{
-		"name": "Black Glasses",
-		"type": "Dark",
-		"value": -1
-	},
-	{
-		"name": "Dark Memory",
-		"type": "Dark",
-		"value": -1
+		"name": "Dragon Memory",
+		"type": "Dragon",
+		"value": 40
 	},
 	{
 		"name": "Eviolite",
@@ -115,6 +150,11 @@ items = [
 		"value": 6
 	},
 	{
+		"name": "Jaboca Berry",
+		"type": "Dragon",
+		"value": 6
+	},
+	{
 		"name": "Aguav Berry",
 		"type": "Dragon",
 		"value": 4
@@ -125,9 +165,9 @@ items = [
 		"value": 4
 	},
 	{
-		"name": "Dragon Memory",
-		"type": "Dragon",
-		"value": -1
+		"name": "Electric Memory",
+		"type": "Electric",
+		"value": 40
 	},
 	{
 		"name": "Light Ball",
@@ -175,9 +215,9 @@ items = [
 		"value": 0
 	},
 	{
-		"name": "Electric Memory",
-		"type": "Electric",
-		"value": -1
+		"name": "Fairy Memory",
+		"type": "Fairy",
+		"value": 40
 	},
 	{
 		"name": "Berry Sweet",
@@ -215,6 +255,11 @@ items = [
 		"value": 30
 	},
 	{
+		"name": "Whipped Dream",
+		"type": "Fairy",
+		"value": 26
+	},
+	{
 		"name": "Sachet",
 		"type": "Fairy",
 		"value": 20
@@ -250,14 +295,24 @@ items = [
 		"value": 4
 	},
 	{
+		"name": "Pixie Plate",
+		"type": "Fairy",
+		"value": 2
+	},
+	{
 		"name": "Pink Apricorn",
 		"type": "Fairy",
 		"value": 0
 	},
 	{
-		"name": "Fairy Memory",
-		"type": "Fairy",
-		"value": -1
+		"name": "Fighting Memory",
+		"type": "Fighting",
+		"value": 40
+	},
+	{
+		"name": "Expert Belt",
+		"type": "Fighting",
+		"value": 32
 	},
 	{
 		"name": "Armorite Ore",
@@ -268,6 +323,11 @@ items = [
 		"name": "Macho Brace",
 		"type": "Fighting",
 		"value": 26
+	},
+	{
+		"name": "Choice Band",
+		"type": "Fighting",
+		"value": 20
 	},
 	{
 		"name": "Power Anklet",
@@ -295,12 +355,27 @@ items = [
 		"value": 20
 	},
 	{
+		"name": "Black Belt",
+		"type": "Fighting",
+		"value": 14
+	},
+	{
 		"name": "Muscle Band",
 		"type": "Fighting",
 		"value": 14
 	},
 	{
 		"name": "Focus Band",
+		"type": "Fighting",
+		"value": 12
+	},
+	{
+		"name": "Focus Sash",
+		"type": "Fighting",
+		"value": 12
+	},
+	{
+		"name": "Protective Pads",
 		"type": "Fighting",
 		"value": 12
 	},
@@ -355,29 +430,19 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Black Belt",
-		"type": "Fighting",
-		"value": -1
+		"name": "Fire Memory",
+		"type": "Fire",
+		"value": 40
 	},
 	{
-		"name": "Choice Band",
-		"type": "Fighting",
-		"value": -1
+		"name": "Charcoal",
+		"type": "Fire",
+		"value": 32
 	},
 	{
-		"name": "Expert Belt",
-		"type": "Fighting",
-		"value": -1
-	},
-	{
-		"name": "Fighting Memory",
-		"type": "Fighting",
-		"value": -1
-	},
-	{
-		"name": "Focus Sash",
-		"type": "Fighting",
-		"value": -1
+		"name": "Red Card",
+		"type": "Fire",
+		"value": 16
 	},
 	{
 		"name": "Flame Orb",
@@ -420,19 +485,9 @@ items = [
 		"value": 0
 	},
 	{
-		"name": "Charcoal",
-		"type": "Fire",
-		"value": -1
-	},
-	{
-		"name": "Fire Memory",
-		"type": "Fire",
-		"value": -1
-	},
-	{
-		"name": "Red Card",
-		"type": "Fire",
-		"value": -1
+		"name": "Flying Memory",
+		"type": "Flying",
+		"value": 40
 	},
 	{
 		"name": "Air Balloon",
@@ -440,7 +495,17 @@ items = [
 		"value": 20
 	},
 	{
+		"name": "Utility Umbrella",
+		"type": "Flying",
+		"value": 20
+	},
+	{
 		"name": "Sharp Beak",
+		"type": "Flying",
+		"value": 10
+	},
+	{
+		"name": "Lansat Berry",
 		"type": "Flying",
 		"value": 10
 	},
@@ -456,6 +521,11 @@ items = [
 	},
 	{
 		"name": "Grepa Berry",
+		"type": "Flying",
+		"value": 6
+	},
+	{
+		"name": "Health Feather",
 		"type": "Flying",
 		"value": 6
 	},
@@ -490,14 +560,34 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Flying Memory",
-		"type": "Flying",
-		"value": -1
+		"name": "Ghost Memory",
+		"type": "Ghost",
+		"value": 40
+	},
+	{
+		"name": "Reaper Cloth",
+		"type": "Ghost",
+		"value": 32
+	},
+	{
+		"name": "Spell Tag",
+		"type": "Ghost",
+		"value": 26
+	},
+	{
+		"name": "Cleanse Tag",
+		"type": "Ghost",
+		"value": 24
 	},
 	{
 		"name": "Adrenaline Orb",
 		"type": "Ghost",
 		"value": 12
+	},
+	{
+		"name": "Custap Berry",
+		"type": "Ghost",
+		"value": 10
 	},
 	{
 		"name": "Dusk Stone",
@@ -520,19 +610,9 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Cleanse Tag",
-		"type": "Ghost",
-		"value": -1
-	},
-	{
-		"name": "Reaper Cloth",
-		"type": "Ghost",
-		"value": -1
-	},
-	{
-		"name": "Luminous Moss",
+		"name": "Grass Memory",
 		"type": "Grass",
-		"value": "8-10"
+		"value": 40
 	},
 	{
 		"name": "Sweet Apple",
@@ -670,6 +750,16 @@ items = [
 		"value": 14
 	},
 	{
+		"name": "Mental Herb",
+		"type": "Grass",
+		"value": 14
+	},
+	{
+		"name": "Miracle Seed",
+		"type": "Grass",
+		"value": 14
+	},
+	{
 		"name": "White Herb",
 		"type": "Grass",
 		"value": 14
@@ -678,6 +768,11 @@ items = [
 		"name": "Liechi Berry",
 		"type": "Grass",
 		"value": 12
+	},
+	{
+		"name": "Power Herb",
+		"type": "Grass",
+		"value": 10
 	},
 	{
 		"name": "Sticky Barb",
@@ -690,7 +785,17 @@ items = [
 		"value": 8
 	},
 	{
+		"name": "Big Root",
+		"type": "Grass",
+		"value": 8
+	},
+	{
 		"name": "Grassy Seed",
+		"type": "Grass",
+		"value": 8
+	},
+	{
+		"name": "Luminous Moss",
 		"type": "Grass",
 		"value": 8
 	},
@@ -730,19 +835,9 @@ items = [
 		"value": 0
 	},
 	{
-		"name": "Big Root",
-		"type": "Grass",
-		"value": -1
-	},
-	{
-		"name": "Miracle Seed",
-		"type": "Grass",
-		"value": -1
-	},
-	{
-		"name": "Thick Club",
+		"name": "Ground Memory",
 		"type": "Ground",
-		"value": "18-20"
+		"value": 40
 	},
 	{
 		"name": "Big Nugget",
@@ -750,12 +845,32 @@ items = [
 		"value": 38
 	},
 	{
+		"name": "Chipped Pot",
+		"type": "Ground",
+		"value": 36
+	},
+	{
+		"name": "Cracked Pot",
+		"type": "Ground",
+		"value": 30
+	},
+	{
 		"name": "Soft Sand",
 		"type": "Ground",
 		"value": 20
 	},
 	{
+		"name": "Thick Club",
+		"type": "Ground",
+		"value": 18
+	},
+	{
 		"name": "Nugget",
+		"type": "Ground",
+		"value": 16
+	},
+	{
+		"name": "Heavy-Duty Boots",
 		"type": "Ground",
 		"value": 16
 	},
@@ -766,6 +881,11 @@ items = [
 	},
 	{
 		"name": "Rare Bone",
+		"type": "Ground",
+		"value": 12
+	},
+	{
+		"name": "Terrain Extender",
 		"type": "Ground",
 		"value": 12
 	},
@@ -790,14 +910,19 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Cracked Pot",
-		"type": "Ground",
-		"value": -1
+		"name": "Ice Memory",
+		"type": "Ice",
+		"value": 40
 	},
 	{
 		"name": "Comet Shard",
 		"type": "Ice",
 		"value": 34
+	},
+	{
+		"name": "Never-Melt Ice",
+		"type": "Ice",
+		"value": 14
 	},
 	{
 		"name": "Ganlon Berry",
@@ -813,6 +938,11 @@ items = [
 		"name": "Fossilized Dino",
 		"type": "Ice",
 		"value": 10
+	},
+	{
+		"name": "Snowball",
+		"type": "Ice",
+		"value": 8
 	},
 	{
 		"name": "Ice Stone",
@@ -835,11 +965,6 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Never-Melt Ice",
-		"type": "Ice",
-		"value": -1
-	},
-	{
 		"name": "Ability Capsule",
 		"type": "Normal",
 		"value": 40
@@ -855,6 +980,16 @@ items = [
 		"value": 38
 	},
 	{
+		"name": "Amulet Coin",
+		"type": "Normal",
+		"value": 32
+	},
+	{
+		"name": "Up-Grade",
+		"type": "Normal",
+		"value": 30
+	},
+	{
 		"name": "Quick Powder",
 		"type": "Normal",
 		"value": 28
@@ -863,6 +998,26 @@ items = [
 		"name": "Quick Claw",
 		"type": "Normal",
 		"value": 26
+	},
+	{
+		"name": "Silk Scarf",
+		"type": "Normal",
+		"value": 22
+	},
+	{
+		"name": "Choice Scarf",
+		"type": "Normal",
+		"value": 20
+	},
+	{
+		"name": "Lucky Egg",
+		"type": "Normal",
+		"value": 20
+	},
+	{
+		"name": "Safety Goggles",
+		"type": "Normal",
+		"value": 10
 	},
 	{
 		"name": "Normal Gem",
@@ -890,14 +1045,9 @@ items = [
 		"value": 0
 	},
 	{
-		"name": "Silk Scarf",
-		"type": "Normal",
-		"value": -1
-	},
-	{
-		"name": "Up-Grade",
-		"type": "Normal",
-		"value": -1
+		"name": "Poison Memory",
+		"type": "Poison",
+		"value": 40
 	},
 	{
 		"name": "Poison Barb",
@@ -913,6 +1063,11 @@ items = [
 		"name": "Smoke Ball",
 		"type": "Poison",
 		"value": 22
+	},
+	{
+		"name": "Galarica Cuff",
+		"type": "Poison",
+		"value": 18
 	},
 	{
 		"name": "Toxic Orb",
@@ -960,12 +1115,12 @@ items = [
 		"value": 2
 	},
 	{
-		"name": "Galarica Cuff",
-		"type": "Poison",
-		"value": -1
+		"name": "Rare Candy",
+		"type": "Psychic",
+		"value": 40
 	},
 	{
-		"name": "Rare Candy",
+		"name": "Psychic Memory",
 		"type": "Psychic",
 		"value": 40
 	},
@@ -973,6 +1128,16 @@ items = [
 		"name": "Destiny Knot",
 		"type": "Psychic",
 		"value": 28
+	},
+	{
+		"name": "Room Service",
+		"type": "Psychic",
+		"value": 24
+	},
+	{
+		"name": "Choice Specs",
+		"type": "Psychic",
+		"value": 20
 	},
 	{
 		"name": "Light Clay",
@@ -991,6 +1156,16 @@ items = [
 	},
 	{
 		"name": "Exp. Candy XL",
+		"type": "Psychic",
+		"value": 10
+	},
+	{
+		"name": "Starf Berry",
+		"type": "Psychic",
+		"value": 10
+	},
+	{
+		"name": "Wise Glasses",
 		"type": "Psychic",
 		"value": 10
 	},
@@ -1050,9 +1225,19 @@ items = [
 		"value": 2
 	},
 	{
+		"name": "Rock Memory",
+		"type": "Rock",
+		"value": 40
+	},
+	{
 		"name": "Rocky Helmet",
 		"type": "Rock",
 		"value": 26
+	},
+	{
+		"name": "Protector",
+		"type": "Rock",
+		"value": 24
 	},
 	{
 		"name": "Everstone",
@@ -1070,6 +1255,11 @@ items = [
 		"value": 14
 	},
 	{
+		"name": "Oval Stone",
+		"type": "Rock",
+		"value": 12
+	},
+	{
 		"name": "Smooth Rock",
 		"type": "Rock",
 		"value": 12
@@ -1080,12 +1270,12 @@ items = [
 		"value": 10
 	},
 	{
-		"name": "Float Stone",
+		"name": "Micle Berry",
 		"type": "Rock",
-		"value": 8
+		"value": 10
 	},
 	{
-		"name": "Oval Stone",
+		"name": "Float Stone",
 		"type": "Rock",
 		"value": 8
 	},
@@ -1115,6 +1305,11 @@ items = [
 		"value": 40
 	},
 	{
+		"name": "Steel Memory",
+		"type": "Steel",
+		"value": 40
+	},
+	{
 		"name": "King's Rock",
 		"type": "Steel",
 		"value": 32
@@ -1135,12 +1330,12 @@ items = [
 		"value": 20
 	},
 	{
-		"name": "Utility Umbrella",
+		"name": "Eject Button",
 		"type": "Steel",
-		"value": 20
+		"value": 16
 	},
 	{
-		"name": "Eject Button",
+		"name": "Eject Pack",
 		"type": "Steel",
 		"value": 16
 	},
@@ -1155,9 +1350,29 @@ items = [
 		"value": 14
 	},
 	{
+		"name": "Soothe Bell",
+		"type": "Steel",
+		"value": 14
+	},
+	{
 		"name": "Babiri Berry",
 		"type": "Steel",
 		"value": 4
+	},
+	{
+		"name": "Rusted Shield",
+		"type": "Steel",
+		"value": 2
+	},
+	{
+		"name": "Rusted Sword",
+		"type": "Steel",
+		"value": 2
+	},
+	{
+		"name": "Water Memory",
+		"type": "Water",
+		"value": 40
 	},
 	{
 		"name": "Pearl String",
@@ -1185,7 +1400,17 @@ items = [
 		"value": 12
 	},
 	{
+		"name": "Throat Spray",
+		"type": "Water",
+		"value": 12
+	},
+	{
 		"name": "Fossilized Fish",
+		"type": "Water",
+		"value": 10
+	},
+	{
+		"name": "Mystic Water",
 		"type": "Water",
 		"value": 10
 	},
@@ -1224,9 +1449,4 @@ items = [
 		"type": "Water",
 		"value": 0
 	},
-	{
-		"name": "Mystic Water",
-		"type": "Water",
-		"value": -1
-	}
 ];
