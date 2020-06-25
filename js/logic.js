@@ -1,6 +1,4 @@
 var types = Object.keys(recipes);
-var listoutputs = '';
-
 let serebiiUrl = 'https://www.serebii.net/itemdex/';
 let urlPostfix = '.shtml';
 
@@ -23,8 +21,6 @@ $(document).ready(function() {
             let range = calcCostRange(cost);
             let newOption = $('<option />', { text: itemName + " (" + type + ", " + range[0] + "-" + range[1] + ")", value: itemName, data: item });
             outputSelect.append(newOption);
-
-			// listoutputs += '<option value="' + itemName + '" data-item=' + JSON.stringify(item) + '>' + itemName + ' (' + type +  ')' + '</option>';
 		});
     });
     $.each(fixedRecipes, function(index, fixedRecipe){
@@ -38,7 +34,6 @@ $(document).ready(function() {
     });
     let blankOption = $('<option />', { text: 'Select an item', value: '', selected: true });
     outputSelect.prepend(blankOption);
-	// $('#outputItems').append(listoutputs);
 	
 	$('#outputItems').on("change", function() {
         let selectedItem = $('#outputItems option:selected').data();
@@ -112,20 +107,20 @@ function updateDisplay() {
         var lookupValue = output["lookupValue"];
         var type = output["type"];
 
-        if(selectedRecipe["type"] == "Fixed") {
+        var fixedRecipeInputs = fixedRecipes.map(function(recipe, index){ 
+            return recipe["input"]; 
+        });
+        var item1 = $('#item1 option:selected').data();
+        var item2 = $('#item2 option:selected').data();
+        var item3 = $('#item3 option:selected').data();
+        var item4 = $('#item4 option:selected').data();
 
-            var requiredItem = fixedRecipes.find(recipe => recipe["output"] == selectedRecipe["name"])["input"];
-            var item1 = $('#item1 option:selected').data();
-            var item2 = $('#item2 option:selected').data();
-            var item3 = $('#item3 option:selected').data();
-            var item4 = $('#item4 option:selected').data();
-
-            if(item1["name"] == requiredItem && item3["name"] == requiredItem && item4["name"] == requiredItem && item2["name"] != undefined){
-                $('#currentName').html(selectedRecipe["name"]);
-                var urlItem = selectedRecipe["name"].toLowerCase().replace("'","").replace(" ","");
-                $('#currentName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + selectedRecipe["name"] + '</a>');
-                $('#currentCost').html("3x " + fixedRecipes.find(recipe => recipe["output"] == selectedRecipe["name"])["input"] + " + " + item2["name"]);
-            }
+        if(fixedRecipeInputs.includes(item1["name"]) && item3["name"] == item1["name"] && item4["name"] == item1["name"] && item2["name"] != undefined){
+            $('#currentName').html(item1["name"]);
+            var fixedOutputItem = fixedRecipes.find(recipe => recipe["input"] == item1["name"])["output"];
+            var urlItem = fixedOutputItem.toLowerCase().replace("'","").replace(" ","");
+            $('#currentName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + fixedOutputItem + '</a>');
+            $('#currentCost').html("3x " + item1["name"] + " + " + item2["name"]);
         }
 
         else if(type != undefined && value != undefined) {
@@ -182,7 +177,6 @@ function toggleTheme() {
         $('html').get(0).style.setProperty(	"--link-color", "dodgerblue");
         defaultTheme = !defaultTheme;
     }
- 
 }
 
 function calcCostRange(cost) {
@@ -237,7 +231,6 @@ function generateOptions(itemList, selectList) {
 }
 
 function calcOutput() {
-	
 	var type = undefined;
 	var totalValue = 0;
 	
@@ -255,7 +248,6 @@ function calcOutput() {
 		}
 		
 		totalValue += value;
-		
 	}
 
 	convertedValue = convertRecipeValue(totalValue);
