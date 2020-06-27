@@ -19,7 +19,7 @@ $(document).ready(function() {
                 type: type
             }
             let range = calcCostRange(cost);
-            let newOption = $('<option />', { text: itemName + " (" + type + ", " + range[0] + "-" + range[1] + ")", value: itemName, data: item });
+            let newOption = $('<option />', { text: itemName + " <span class=" + type + ">" + type + "</span>" + " (" + range[0] + "-" + range[1] + ")", value: itemName, data: item });
             outputSelect.append(newOption);
 		});
     });
@@ -29,7 +29,7 @@ $(document).ready(function() {
             cost: -1,
             type: "Fixed"
         }
-        let newOption = $('<option />', { text: fixedRecipe["output"] + " (" + "Fixed" + ", 3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
+        let newOption = $('<option />', { text: fixedRecipe["output"] + " <span class=Fixed>Fixed</span>" + " (3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
         outputSelect.append(newOption);
     });
     let blankOption = $('<option />', { text: 'Select an item', value: '', selected: true });
@@ -66,7 +66,11 @@ $(document).ready(function() {
         updateDisplay();
 	});
 	
-    $('.dropdown').select2();
+    $('.dropdown').select2({
+        escapeMarkup: function(markup) {
+            return markup;
+        }
+    });
 
 	
 	$("#item1, #item2, #item3, #item4").on("change", function() {
@@ -217,8 +221,8 @@ function generateOptions(itemList, selectList) {
 
         var newOption = undefined;
         $.each(selectList, function(index, selectId){
-            newOption = $('<option />', { 
-                text: item["name"] + ' (' + item["type"] + ', ' + item["value"] + ')', 
+            newOption = $("<option />", { 
+                text: item["name"]  + " <span class=" + item["type"] + ">" + item["type"] + "</span>"  + ' (' + item["value"] + ')', 
                 value: item["name"], 
                 data: item });
             $(selectId).append(newOption);
