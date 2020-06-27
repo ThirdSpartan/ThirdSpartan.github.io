@@ -38,17 +38,38 @@
 				<h3>Output</h3>
 			</div>
 
-			<div class="col-6 text-left">
-				<span>Desired Recipe: <span id="desiredName">None</span></span>
-				<br>
-				<span>Cost: <span id="desiredCost">None</span></span>
+			<div class="col-6 text-left bordered">
+				<div class="row">
+					<div class="col-12 text-center border-bottom border-dark tableHeader">
+						Desired Output
+					</div>
+					<div class="col-12 text-center border-bottom border-dark">
+						<span id="desiredName">None</span>
+					</div>
+					<div class="col-12 text-center border-bottom border-dark tableHeader">
+						Cost
+					</div>
+					<div class="col-12 text-center">
+						<span id="desiredCost">None</span>
+					</div>
+				</div>
 			</div>
 
-			<div class="col-6 text-right">
-				
-				<span>Current Output: <span id="currentName">None</span></span>
-				<br>
-				<span>Current Value: <span id="currentCost">None</span></span>
+			<div class="col-6 text-right bordered">
+				<div class="row">
+					<div class="col-12 text-center border-bottom border-dark tableHeader">
+						Current Output
+					</div>
+					<div class="col-12 text-center border-bottom border-dark">
+						<span id="currentName">None</span>
+					</div>
+					<div class="col-12 text-center border-bottom border-dark tableHeader">
+						Current Value
+					</div>
+					<div class="col-12 text-center">
+						<span id="currentCost">None</span>
+					</div>
+				</div>
 			</div>
 
 			<div class="col-12 mt-4">
@@ -64,7 +85,6 @@
 				<ul>
 					<li>The first dropdown lists all possible item outputs with their type and point cost</li>
 					<li>The next 4 dropdowns represent all possible ingredients with their type and point value</li>
-					<li>Does not support apricorn only/apriball recipes yet</li>
 					<li>Some items do not have a listed value on serebii (labeled UNK) and are treated as adding 0 value</li>
 					<li>"Fixed" recipes require 3 of the same item and the second slot can be anything</li>
 					<li>Will add sorting options for item input lists</li>

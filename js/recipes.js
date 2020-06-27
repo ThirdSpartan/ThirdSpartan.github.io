@@ -354,4 +354,182 @@ fixedRecipes = [
 		"input": "Armorite Ore",
 		"output": "PP Up"
 	}
-]
+];
+
+apricornRecipes = {
+	"Black Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Dusk Ball": 24.75
+		},
+		{
+			"Luxury Ball": 24.75
+		},
+		{
+			"Heavy Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"Blue Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Dive Ball": 24.75
+		},
+		{
+			"Net Ball": 24.75
+		},
+		{
+			"Lure Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"Green Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Ultra Ball": 24.75
+		},
+		{
+			"Nest Ball": 24.75
+		},
+		{
+			"Friend Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"Pink Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Ultra Ball": 24.75
+		},
+		{
+			"Heal Ball": 24.75
+		},
+		{
+			"Love Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"Red Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Ultra Ball": 24.75
+		},
+		{
+			"Repeat Ball": 24.75
+		},
+		{
+			"Level Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"White Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Premier Ball": 24.75
+		},
+		{
+			"Timer Ball": 24.75
+		},
+		{
+			"Fast Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"Yellow Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Ultra Ball": 24.75
+		},
+		{
+			"Quick Ball": 24.75
+		},
+		{
+			"Moon Ball": 1.00
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	],
+	"All Apricorn": [
+		{
+			"Poke Ball": 24.75
+		},
+		{
+			"Great Ball": 24.75
+		},
+		{
+			"Safari Ball": 0.10
+		},
+		{
+			"Sport Ball": 0.10
+		}
+	]
+};

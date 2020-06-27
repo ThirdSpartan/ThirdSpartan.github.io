@@ -6,7 +6,6 @@ let urlPostfix = '.shtml';
 $(document).ready(function() {
     generateOptions(items, ['#item1', '#item2', '#item3', '#item4']);
 
-    
     var outputSelect = $('#outputItems');
 	
 	$.each(types, function(index, type){
@@ -72,7 +71,6 @@ $(document).ready(function() {
         }
     });
 
-	
 	$("#item1, #item2, #item3, #item4").on("change", function() {
         updateDisplay();
 	});
@@ -114,20 +112,46 @@ function updateDisplay() {
         var fixedRecipeInputs = fixedRecipes.map(function(recipe, index){ 
             return recipe["input"]; 
         });
+
+        var apricorns = Object.keys(apricornRecipes);
         var item1 = $('#item1 option:selected').data();
         var item2 = $('#item2 option:selected').data();
         var item3 = $('#item3 option:selected').data();
         var item4 = $('#item4 option:selected').data();
+        let itemVarList = [item1, item2, item3, item4];
 
         if(fixedRecipeInputs.includes(item1["name"]) && item3["name"] == item1["name"] && item4["name"] == item1["name"] && item2["name"] != undefined){
-            $('#currentName').html(item1["name"]);
             var fixedOutputItem = fixedRecipes.find(recipe => recipe["input"] == item1["name"])["output"];
             var urlItem = fixedOutputItem.toLowerCase().replace("'","").replace(" ","");
             $('#currentName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + fixedOutputItem + '</a>');
             $('#currentCost').html("3x " + item1["name"] + " + " + item2["name"]);
-        }
+        } else if(apricorns.includes(item1["name"]) && apricorns.includes(item2["name"]) && apricorns.includes(item3["name"]) && apricorns.includes(item4["name"])) {
+            var outputBalls = {};
+            $.each(itemVarList, function(index, item){
+                $.each(apricornRecipes[item["name"]], function(index, ball){
+                    let ballName = Object.keys(ball)[0];
+                    if(outputBalls[ballName] == undefined) {
+                        outputBalls[ballName] = 0;
+                    }
+                    outputBalls[ballName] += ball[ballName];
+                });
+            });
+            $('#currentName').empty();
+            var ballList = Object.keys(outputBalls);
+            ballList = ballList.sort((a, b) => outputBalls[b] - outputBalls[a]);
+            $.each(ballList, function(index, ballName){
+                outputBalls[ballName] = outputBalls[ballName]/4;
+                let urlItem = ballName.toLowerCase().replace("'","").replace(" ","");
+                newElement = $("<div />", { 
+                    // html: '<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + ballName + '</a> (' + outputBalls[ballName] + '%)'
+                    html: '<div class="row border-bottom border-dark"><div class="col-6"> <a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + ballName + '</a> </div><div class="col-6">' + outputBalls[ballName] + '%</div></div>'
+                });
+                $('#currentName').append(newElement);
+            });
+            // $('#currentCost').html(item1["name"] + " + " + item2["name"] + " + " + item3["name"] + " + " + item4["name"]);
+            $('#currentCost').html("N/A");
 
-        else if(type != undefined && value != undefined) {
+        } else if(type != undefined && value != undefined) {
             var outputItem = recipes[type][lookupValue];
             if (Array.isArray(outputItem)){
                 let itemLink = '';
@@ -174,11 +198,13 @@ function toggleTheme() {
         $('html').get(0).style.setProperty(	"--main-bg-color", "dodgerblue");
         $('html').get(0).style.setProperty(	"--text-color", "springgreen");
         $('html').get(0).style.setProperty(	"--link-color", "yellow");
+        $('html').get(0).style.setProperty(	"--header-color", "blue");
         defaultTheme = !defaultTheme;
     } else {
         $('html').get(0).style.setProperty(	"--main-bg-color", "lightgray");
         $('html').get(0).style.setProperty(	"--text-color", "black");
         $('html').get(0).style.setProperty(	"--link-color", "dodgerblue");
+        $('html').get(0).style.setProperty(	"--header-color", "darkgray");
         defaultTheme = !defaultTheme;
     }
 }

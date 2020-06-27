@@ -2,6 +2,7 @@ html {
 	--main-bg-color: lightgray;
 	--text-color: black;
 	--link-color: dodgerblue;
+	--header-color: darkgray;
   }
 
 .dropdown {
@@ -21,6 +22,11 @@ a:link {
 	color: var(--text-color);
 }
 
+.tableHeader {
+	background-color: var(--header-color);
+	color: var(--text-color);
+}
+
 .footer {
 	background-color: black;
 	color: white;
@@ -30,6 +36,10 @@ a:link {
 	width: 100%;
 	text-align: center;
 
+}
+
+.bordered {
+	border: 1px solid black;
 }
 
 .select2-search { color: black; }
