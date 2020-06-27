@@ -19,7 +19,7 @@ $(document).ready(function() {
                 type: type
             }
             let range = calcCostRange(cost);
-            let newOption = $('<option />', { text: itemName + " <span class=" + type + ">" + type + "</span>" + " (" + range[0] + "-" + range[1] + ")", value: itemName, data: item });
+            let newOption = $('<option />', { text: "<span class=" + type + ">" + type + "</span> " + itemName + " (" + range[0] + "-" + range[1] + ")", value: itemName, data: item });
             outputSelect.append(newOption);
 		});
     });
@@ -29,7 +29,7 @@ $(document).ready(function() {
             cost: -1,
             type: "Fixed"
         }
-        let newOption = $('<option />', { text: fixedRecipe["output"] + " <span class=Fixed>Fixed</span>" + " (3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
+        let newOption = $('<option />', { text: "<span class=Fixed>Fixed</span> " + fixedRecipe["output"] + " (3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
         outputSelect.append(newOption);
     });
     let blankOption = $('<option />', { text: 'Select an item', value: '', selected: true });
@@ -222,7 +222,7 @@ function generateOptions(itemList, selectList) {
         var newOption = undefined;
         $.each(selectList, function(index, selectId){
             newOption = $("<option />", { 
-                text: item["name"]  + " <span class=" + item["type"] + ">" + item["type"] + "</span>"  + ' (' + item["value"] + ')', 
+                text: " <span class=" + item["type"] + ">" + item["type"] + "</span> "  + item["name"] + ' (' + item["value"] + ')', 
                 value: item["name"], 
                 data: item });
             $(selectId).append(newOption);
