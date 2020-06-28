@@ -49,12 +49,18 @@ a:link {
 }
 
 .footer {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 	text-align: center;
 	font-weight: 300;
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        position: relative;
+    }
 }
 
 .footer-text {
@@ -94,6 +100,7 @@ h1, h6 {
 	padding-left: 4px;
 	padding-right: 4px;
 	cursor: pointer;
+	min-height: 26px;
 }
 
 .Normal {
