@@ -1,16 +1,30 @@
 html {
-	--main-bg-color: lightgray;
+	--main-bg-color: azure;
 	--text-color: black;
 	--link-color: dodgerblue;
-	--header-color: darkgray;
-  }
+	--header-color: skyblue;
+
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: azure;
+	height: 100%;
+	width: 100%;
+	font-weight: 300;
+}
+
+.select2 {
+	width:100%!important;
+}
 
 .dropdown {
 	width: 100%;
 }
 
-.recipeForm {
-	width: 350px;
+.dropdownSort {
+	width: 100%;
 }
 
 a:link {
@@ -22,240 +36,184 @@ a:link {
 	color: var(--text-color);
 }
 
-.tableHeader {
+.table-header {
 	background-color: var(--header-color);
 	color: var(--text-color);
+	min-height: 28px;
+}
+
+.table-data {
+	min-height: 36px;
+	margin-bottom: 4px;
+	margin-top: 4px;
 }
 
 .footer {
-	background-color: black;
-	color: white;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 	text-align: center;
-
+	font-weight: 300;
 }
 
-.bordered {
-	border: 1px solid black;
+.footer-text {
+	margin-bottom: 0;
+	font-size: smaller;
 }
 
-.select2-search { color: black; }
+.select2-search { 
+	color: black; 
+}
 
-.select2-search input { color: black; }
+.select2-search input { 
+	color: black; 
+}
 
-.select2-results { color: black; }
+.select2-results { 
+	color: black; 
+}
+
+span.select2-selection.select2-selection--single, .select2-selection__rendered, .select2-selection { 
+	outline: none;
+}
 
 .select2-container { margin-bottom: 8px; }
 
+h1, h6 {
+	font-weight: 300;
+}
+
+.button {
+	font-weight: 300;
+	background-color: var(--header-color);
+	color: var(--text-color);
+	border: 1px solid gray;
+	border-radius: 4px;
+	display: inline-block;
+	padding-left: 4px;
+	padding-right: 4px;
+	cursor: pointer;
+}
 
 .Normal {
 	background-color: #A8A878;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #6D6D4E;
 }
 
 .Fire {
 	background-color: #F08030;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #9C531F;
 }
 
 .Water {
 	background-color: #6890F0;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #445E9C;
 }
 
 .Electric {
 	background-color: #F8D030;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #A1871F;
 }
 
 .Grass {
 	background-color: #78C850;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #4E8234;
 }
 
 .Ice {
 	background-color: #98D8D8;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #638D8D;
 }
 
 .Fighting {
 	background-color: #C03028;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #7D1F1A;
 }
 
 .Poison {
 	background-color: #A040A0;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #682A68;
 }
 
 .Ground {
 	background-color: #E0C068;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #927D44;
 }
 
 .Flying {
 	background-color: #A890F0;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #6D5E9C;
 }
 
 .Psychic {
 	background-color: #F85888;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #A13959;
 }
 
 .Bug {
 	background-color: #A8B820;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #6D7815;
 }
 
 .Rock {
 	background-color: #B8A038;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #786824;
 }
 
 .Ghost {
 	background-color: #705898;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #493963;
 }
 
 .Dragon {
 	background-color: #7038F8;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #4924A1;
 }
 
 .Dark {
 	background-color: #705848;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #49392F;
 }
 
 .Steel {
 	background-color: #B8B8D0;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #787887;
 }
 
 .Fairy {
 	background-color: #EE99AC;
 	color: white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 6px;
 	border: 2px solid #9B6470;
 }
 
 .Fixed {
 	background-color: #68A090;
 	color: white;
+	border: 2px solid #44685E;
+}
+
+.type-icon {
 	padding-left: 4px;
 	padding-right: 4px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	border-radius: 6px;
-	border: 2px solid #44685E;
 }

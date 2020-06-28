@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body class="background p-4">
@@ -23,81 +24,65 @@
 				<h1><a target=”_blank” href='https://www.serebii.net/swordshield/cram-o-matic.shtml'>Cram-O-Matic</a> Recipe Calculator</h1>
 			</div>
 
-			<div class="col-12 text-center">
-				<h3>Select An Item You Want Or Start Choosing Ingredients</h3>
-				<select id="outputItems" class="dropdown"></select>
-			</div>
-
-			<div class="col-12 text-center">
-				<h3>Input</h3>
-				<select id="item1" class="dropdown"></select>
-				<select id="item2" class="dropdown"></select>
-				<select id="item3" class="dropdown"></select>
-				<select id="item4" class="dropdown"></select>
-
-				<h3>Output</h3>
-			</div>
-
-			<div class="col-6 text-left bordered">
+			<div class="col-6 text-center">
+				<h6>Input</h6>
 				<div class="row">
-					<div class="col-12 text-center border-bottom border-dark tableHeader">
-						Desired Output
-					</div>
-					<div class="col-12 text-center border-bottom border-dark">
-						<span id="desiredName">None</span>
-					</div>
-					<div class="col-12 text-center border-bottom border-dark tableHeader">
-						Cost
+					<div class="col-12 text-center"><select id="item1" class="dropdown"></select></div>
+					<div class="col-12 text-center"><select id="item2" class="dropdown"></select></div>
+					<div class="col-12 text-center"><select id="item3" class="dropdown"></select></div>
+					<div class="col-12 text-center"><select id="item4" class="dropdown"></select></div>
+					<div class="col-12 text-center">
+						<div style="height: 36px">Sort By</div>
 					</div>
 					<div class="col-12 text-center">
-						<span id="desiredCost">None</span>
+						<select id="sortOptions" class="dropdownSort"></select>
+					</div>
+					<div class="col-12 text-left">
+						<div class="button" onclick="toggleTheme()">CRAMORANT</div>
+						<div class="button" onclick="reload()">Reload</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-6 text-right bordered">
+			<div class="col-6 text-right">
 				<div class="row">
-					<div class="col-12 text-center border-bottom border-dark tableHeader">
+					<div class="col-12 text-center p-0">
+						<h6>Possible Output</h6>
+						<select id="outputItems" class="dropdown"></select>
+					</div>
+					<div class="col-6 align-middle text-center border-bottom border-top border-secondary table-header">
+						Desired Output
+					</div>
+					<div class="col-6 text-center border-bottom border-top border-secondary table-header">
+						Cost
+					</div>
+					<div class="col-6 text-center align-middle border-secondary table-data">
+						<span id="desiredName">None</span>
+					</div>
+					<div class="col-6 text-center border-secondary table-data">
+						<span id="desiredCost">None</span>
+					</div>
+					<div class="col-12 text-center border-bottom border-top border-secondary table-header">
 						Current Output
 					</div>
-					<div class="col-12 text-center border-bottom border-dark">
+					<div class="col-12 text-center border-secondary table-data">
 						<span id="currentName">None</span>
 					</div>
-					<div class="col-12 text-center border-bottom border-dark tableHeader">
+					<div class="col-12 text-center border-bottom border-top border-secondary table-header">
 						Current Value
 					</div>
-					<div class="col-12 text-center">
+					<div class="col-12 text-center table-data">
 						<span id="currentCost">None</span>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-12 mt-4">
-				<button onclick="toggleTheme()">Toggle Theme</button>
-				<button onclick="reload()">Reload</button>
-				<!-- <button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'name')">Sort by name</button>
-				<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'value')">Sort by value</button>
-				<button onclick="sortOptions(['#item1', '#item2', '#item3', '#item4'], 'type')">Sort by type</button> -->
-			</div>
-			
-			<div class="col-12 mt-4">
-				<h3 class="text-center">Notes</h3>
-				<ul>
-					<li>The first dropdown lists all possible item outputs with their type and point cost</li>
-					<li>The next 4 dropdowns represent all possible ingredients with their type and point value</li>
-					<li>Some items do not have a listed value on serebii (labeled UNK) and are treated as adding 0 value</li>
-					<li>"Fixed" recipes require 3 of the same item and the second slot can be anything</li>
-					<li>Will add sorting options for item input lists</li>
-				</ul>
-			</div>
-
 		</div>
 	</div>
-
 </body>
 
 <div class="footer">
-	<p>All credit goes to <a target=”_blank” href='https://www.serebii.net/'>serebii.net</a> and its contributors for the data used to create this site</p>
+	<p class="footer-text">Data source: <a target=”_blank” href='https://www.serebii.net/'>Serebii</a> and its contributors</p>
+	<p class="footer-text">Not intended for commercial use &copy; 2020 Pok&eacute;mon</p>
 </div>
 
 </html>

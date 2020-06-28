@@ -2,11 +2,50 @@ var types = Object.keys(recipes);
 let serebiiUrl = 'https://www.serebii.net/itemdex/';
 let urlPostfix = '.shtml';
 
+var inputLists = {
+    "#item1": [], 
+    "#item2": [], 
+    "#item3": [], 
+    "#item4": []
+};
+var sortingOptions = [
+    {
+        name: "Name Asc",
+        function: "sortNameAsc"
+    },
+    {
+        name: "Name Desc",
+        function: "sortNameDesc"
+    },
+    {
+        name: "Value Asc",
+        function: "sortValueAsc"
+    },
+    {
+        name: "Value Desc",
+        function: "sortValueDesc"
+    },
+    {
+        name: "Type Asc",
+        function: "sortTypeAsc"
+    },
+    {
+        name: "Type Desc",
+        function: "sortTypeDesc"
+    }
+];
 
 $(document).ready(function() {
-    generateOptions(items, ['#item1', '#item2', '#item3', '#item4']);
 
     var outputSelect = $('#outputItems');
+    var sortSelect = $('#sortOptions');
+
+    $.each(sortingOptions, function(index, option){
+        let newOption = $('<option />', { text: option["name"], value: option["function"]});
+        sortSelect.append(newOption);
+    });
+
+    generateOptions(items, ['#item1', '#item2', '#item3', '#item4']);
 	
 	$.each(types, function(index, type){
 		let recipeCosts = Object.keys(recipes[type]);
@@ -18,7 +57,7 @@ $(document).ready(function() {
                 type: type
             }
             let range = calcCostRange(cost);
-            let newOption = $('<option />', { text: "<span class=" + type + ">" + type + "</span> " + itemName + " (" + range[0] + "-" + range[1] + ")", value: itemName, data: item });
+            let newOption = $('<option />', { text: '<span class="' + type + " type-icon" + '">' + type + "</span> " + itemName + " (" + range[0] + "-" + range[1] + ")", value: itemName, data: item });
             outputSelect.append(newOption);
 		});
     });
@@ -28,7 +67,7 @@ $(document).ready(function() {
             cost: -1,
             type: "Fixed"
         }
-        let newOption = $('<option />', { text: "<span class=Fixed>Fixed</span> " + fixedRecipe["output"] + " (3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
+        let newOption = $('<option />', { text: '<span class="Fixed type-icon">Fixed</span> ' + fixedRecipe["output"] + " (3x " + fixedRecipe["input"] + ")", value: fixedRecipe["output"], data: item });
         outputSelect.append(newOption);
     });
     let blankOption = $('<option />', { text: 'Select an item', value: '', selected: true });
@@ -39,41 +78,51 @@ $(document).ready(function() {
         if(selectedItem["type"] != undefined && selectedItem["cost"] != undefined) {
             if(selectedItem["type"] == "Fixed") {
                 filtered = items.filter(item => item["name"] == fixedRecipes.find(recipe => recipe["output"] == selectedItem["name"])["input"]);
-                $('#item1').empty();
-                $('#item3').empty();
-                $('#item4').empty();
                 generateOptions(filtered, ['#item1', '#item3', '#item4']);
-                $('#item2').empty();
                 generateOptions(items, ['#item2']);
 
             } else {
                 filtered = items.filter(item => item["type"] == selectedItem["type"]);
-                $('#item1').empty();
                 generateOptions(filtered, ['#item1']);
-                $('#item2').empty();
-                $('#item3').empty();
-                $('#item4').empty();
                 generateOptions(items, ['#item2', '#item3', '#item4']);
             }
         } else {
-            $('#item1').empty();
-            $('#item2').empty();
-            $('#item3').empty();
-            $('#item4').empty();
             generateOptions(items, ['#item1', '#item2','#item3', '#item4']);
         }
         updateDisplay();
 	});
-	
+	$('.dropdownSort').select2();
+    $('.select2').addClass("select-border");
     $('.dropdown').select2({
+        allowClear: true,
+        placeholder: "Select an item",
         escapeMarkup: function(markup) {
             return markup;
+        }
+    }).on('select2:unselecting', function() {
+        $(this).data('unselecting', true);
+    }).on('select2:opening', function(e) {
+        if ($(this).data('unselecting')) {
+            $(this).removeData('unselecting');
+            e.preventDefault();
         }
     });
 
 	$("#item1, #item2, #item3, #item4").on("change", function() {
         updateDisplay();
-	});
+    });
+    
+    $("#sortOptions").on("change", function() {
+        let selectList = Object.keys(inputLists);
+        $.each(selectList, function(index, selectKey){
+            
+            var selected = $(selectKey).val();
+            generateOptions(inputLists[selectKey], [selectKey]);
+            $(selectKey).val(selected).trigger('change');
+        });
+        updateDisplay();
+    });
+
 });
 
 function updateDisplay() {
@@ -83,16 +132,15 @@ function updateDisplay() {
         if (Array.isArray(selectedRecipe["name"])){
             let itemLink = '';
             $.each(selectedRecipe["name"], function(index, itemName){
-                let urlItem = itemName.toLowerCase().replace("'","").replace(" ","");
-                itemLink += '<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + itemName + (index == selectedRecipe["name"].length - 1 ? '</a>' : '</a>, ')
+                itemLink += generateSerebiiLink(itemName) + (index == selectedRecipe["name"].length - 1 ? '' : ', ')
             });
             $('#desiredName').html(itemLink);
         } else {
-            var urlItem = selectedRecipe["name"].toLowerCase().replace("'","").replace(" ","");
-            $('#desiredName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + selectedRecipe["name"] + '</a>');
+            $('#desiredName').html(generateSerebiiLink(selectedRecipe["name"]));
         }
         if(selectedRecipe["type"] == "Fixed") {
-            $('#desiredCost').html("3x " + fixedRecipes.find(recipe => recipe["output"] == selectedRecipe["name"])["input"] + " + (Any Item)" );
+            let desiredItem = fixedRecipes.find(recipe => recipe["output"] == selectedRecipe["name"])["input"];
+            $('#desiredCost').html("3x " + generateSerebiiLink(desiredItem) + " + (Any Item)" );
         } else {
             range = calcCostRange(selectedRecipe["cost"])
             $('#desiredCost').html(range[0] + "-" + range[1]);
@@ -101,7 +149,6 @@ function updateDisplay() {
         $('#desiredName').html("None");
         $('#desiredCost').html("None");
     }
-
 
     var output = calcOutput();
     if(output != false){
@@ -122,9 +169,8 @@ function updateDisplay() {
 
         if(fixedRecipeInputs.includes(item1["name"]) && item3["name"] == item1["name"] && item4["name"] == item1["name"] && item2["name"] != undefined){
             var fixedOutputItem = fixedRecipes.find(recipe => recipe["input"] == item1["name"])["output"];
-            var urlItem = fixedOutputItem.toLowerCase().replace("'","").replace(" ","");
-            $('#currentName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + fixedOutputItem + '</a>');
-            $('#currentCost').html("3x " + item1["name"] + " + " + item2["name"]);
+            $('#currentName').html(generateSerebiiLink(fixedOutputItem));
+            $('#currentCost').html("3x " + generateSerebiiLink(item1["name"]) + " + " + generateSerebiiLink(item2["name"]));
         } else if(apricorns.includes(item1["name"]) && apricorns.includes(item2["name"]) && apricorns.includes(item3["name"]) && apricorns.includes(item4["name"])) {
             var outputBalls = {};
             $.each(itemVarList, function(index, item){
@@ -141,14 +187,13 @@ function updateDisplay() {
             ballList = ballList.sort((a, b) => outputBalls[b] - outputBalls[a]);
             $.each(ballList, function(index, ballName){
                 outputBalls[ballName] = outputBalls[ballName]/4;
-                let urlItem = ballName.toLowerCase().replace("'","").replace(" ","");
+                let classes = (index == ballList.length-1 ? '"col-6"' : '"col-6 border-bottom border-secondary"');
                 newElement = $("<div />", { 
-                    // html: '<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + ballName + '</a> (' + outputBalls[ballName] + '%)'
-                    html: '<div class="row border-bottom border-dark"><div class="col-6"> <a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + ballName + '</a> </div><div class="col-6">' + outputBalls[ballName] + '%</div></div>'
+                    html: '<div class=' + classes + '>' + generateSerebiiLink(ballName) + '</div><div class=' + classes + '>' + outputBalls[ballName] + '%</div>',
+                    class: 'row'
                 });
                 $('#currentName').append(newElement);
             });
-            // $('#currentCost').html(item1["name"] + " + " + item2["name"] + " + " + item3["name"] + " + " + item4["name"]);
             $('#currentCost').html("N/A");
 
         } else if(type != undefined && value != undefined) {
@@ -156,24 +201,20 @@ function updateDisplay() {
             if (Array.isArray(outputItem)){
                 let itemLink = '';
                 $.each(outputItem, function(index, itemName){
-                    let urlItem = itemName.toLowerCase().replace("'","").replace(" ","");
-                    itemLink += '<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + itemName + (index == outputItem.length - 1 ? '</a>' : '</a>, ')
+                    itemLink += generateSerebiiLink(itemName) + (index == outputItem.length - 1 ? '' : ', ')
                 });
                 $('#currentName').html(itemLink);
             } else {
-                var urlItem = outputItem.toLowerCase().replace("'","").replace(" ","");
-                $('#currentName').html('<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + outputItem + '</a>');
+                $('#currentName').html(generateSerebiiLink(outputItem));
             }
             if(range != undefined) {
                 if(value >= range[0] && value <= range[1]) {
                     $('#currentCost').html(value);
                 } else if(value < range[0]) {
-                    $('#currentCost').html(value + "(need +" + (range[0] - value) + " to +" + (range[1] - value) + ")");
+                    $('#currentCost').html(value + " (need +" + (range[0] - value) + " to +" + (range[1] - value) + ")");
                 } else if(value > range[1]) {
-                    $('#currentCost').html(value + "(need -" + (value - range[0]) + " to -"  + (value - range[1]) + ")");
+                    $('#currentCost').html(value + " (need -" + (value - range[0]) + " to -"  + (value - range[1]) + ")");
                 }
-            } else if(selectedRecipe["type"] == "Fixed") {
-                $('#currentCost').html(value);
             } else {
                 $('#currentCost').html(value);
             }
@@ -186,6 +227,12 @@ function updateDisplay() {
         $('#currentCost').html("None");
     }
 
+}
+
+function generateSerebiiLink(itemName) {
+    let urlItem = itemName.toLowerCase().replace("'","").replace(" ","");
+    let itemLink = '<a target=”_blank” href=' + serebiiUrl + urlItem + urlPostfix + '>' + itemName + '</a>'
+    return itemLink;
 }
 
 function reload() {
@@ -201,10 +248,10 @@ function toggleTheme() {
         $('html').get(0).style.setProperty(	"--header-color", "blue");
         defaultTheme = !defaultTheme;
     } else {
-        $('html').get(0).style.setProperty(	"--main-bg-color", "lightgray");
+        $('html').get(0).style.setProperty(	"--main-bg-color", "azure");
         $('html').get(0).style.setProperty(	"--text-color", "black");
         $('html').get(0).style.setProperty(	"--link-color", "dodgerblue");
-        $('html').get(0).style.setProperty(	"--header-color", "darkgray");
+        $('html').get(0).style.setProperty(	"--header-color", "skyblue");
         defaultTheme = !defaultTheme;
     }
 }
@@ -220,44 +267,70 @@ function calcCostRange(cost) {
     return [minValue, maxValue];
 }
 
-function sortOptions(selectList, filterParam) {
-    // console.log(filterParam);
-    $.each(selectList, function(index, selectId){
-        var sel = $(selectId);
-        var selected = sel.val(); // cache selected value, before reordering
-        var opts_list = sel.find('option');
-        opts_list.sort(function(a, b) { 
-            let paramA = $(a).data()[filterParam];
-            let paramB = $(b).data()[filterParam];
-            // console.log(paramA, paramB);
-            paramA = paramA == "UNK" ? 0 : paramA;
-            paramB = paramB == "UNK" ? 0 : paramB;
-            return paramA > paramB ? -1 : 1; 
-        });
-        sel.empty().append(opts_list);
-        sel.val(selected); // set cached selected value
-    });
-}
-
 function generateOptions(itemList, selectList) {
-	$.each(itemList, function(index, item){
-		if(item["value"] < 0) {
-			item["value"] = "UNK";
-        }
+    generateLists(itemList, selectList);
 
+    $.each(selectList, function(index, selectId){
+        var inputList = inputLists[selectId];
         var newOption = undefined;
-        $.each(selectList, function(index, selectId){
+        $(selectId).empty();
+        $.each(inputList, function(index, item){
             newOption = $("<option />", { 
-                text: " <span class=" + item["type"] + ">" + item["type"] + "</span> "  + item["name"] + ' (' + item["value"] + ')', 
+                text: '<span class="' + item["type"] + " type-icon" + '">' + item["type"] + "</span> "  + item["name"] + ' (' + item["value"] + ')', 
                 value: item["name"], 
                 data: item });
             $(selectId).append(newOption);
         });
 
     });
+
     $.each(selectList, function(index, selectId){
         $('<option />', { text: 'Select an item', value: '', selected: true }).prependTo(selectId);
     });
+}
+
+function generateLists(itemList, selectList) {
+    $.each(selectList, function(index, selectKey){
+        inputLists[selectKey] = [];
+        $.each(itemList, function(index, item){
+            if(item["value"] < 0) {
+                item["value"] = "UNK";
+            }
+            inputLists[selectKey].push(item);
+        });
+    });
+    var sortFunction = $('#sortOptions option:selected').val();
+    sortLists(window[sortFunction]);
+}
+
+function sortLists(sortFunction) {
+    $.each(inputLists, function(index, inputList){
+        inputList.sort(sortFunction);
+    });
+}
+
+function sortValueAsc(a, b) {
+    return a["value"] > b["value"];
+}
+
+function sortValueDesc(a, b) {
+    return b["value"] > a["value"];
+}
+
+function sortNameAsc(a, b) {
+    return a["name"].localeCompare(b["name"]);
+}
+
+function sortNameDesc(a, b) {
+    return b["name"].localeCompare(a["name"]);
+}
+
+function sortTypeAsc(a, b) {
+    return a["type"].localeCompare(b["type"]);
+}
+
+function sortTypeDesc(a, b) {
+    return b["type"].localeCompare(a["type"]);
 }
 
 function calcOutput() {

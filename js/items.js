@@ -17,7 +17,7 @@ items = [
 	{
 		"name": "Shed Shell",
 		"type": "Bug",
-		"value": 8
+		"value": 10
 	},
 	{
 		"name": "Tanga Berry",
@@ -32,7 +32,7 @@ items = [
 	{
 		"name": "Enigma Berry",
 		"type": "Bug",
-		"value": -1
+		"value": 10
 	},
 	{
 		"name": "Dark Memory",
@@ -267,7 +267,7 @@ items = [
 	{
 		"name": "Bright Powder",
 		"type": "Fairy",
-		"value": 18
+		"value": 14
 	},
 	{
 		"name": "Misty Seed",

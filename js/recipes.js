@@ -517,19 +517,5 @@ apricornRecipes = {
 		{
 			"Sport Ball": 0.10
 		}
-	],
-	"All Apricorn": [
-		{
-			"Poke Ball": 24.75
-		},
-		{
-			"Great Ball": 24.75
-		},
-		{
-			"Safari Ball": 0.10
-		},
-		{
-			"Sport Ball": 0.10
-		}
 	]
 };
